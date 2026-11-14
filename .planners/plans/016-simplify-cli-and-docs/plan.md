@@ -1,10 +1,10 @@
 ---
 id: 16
 slug: simplify-cli-and-docs
-status: implemented
+status: done
 branch: feature/016-simplify-cli-and-docs
 created: 2026-11-14T10:26:33-08:00
-concluded:
+concluded: 2026-11-14T10:34:23-08:00
 pr: https://github.com/gitronald/repotemplates/pull/74
 ---
 
@@ -66,3 +66,17 @@ None.
 - **2026-11-14T10:32:33-08:00** — PR opened: https://github.com/gitronald/repotemplates/pull/74
 - **2026-11-14T10:34:27-08:00** — Review follow-up: /code-review at medium (correctness and simplification finders on sonnet) found no correctness defects and two simplifications. Fixed in f58f33f: plan_stamp's plan.stamp guard was implied by the version check. Left as is: _plan_stamp_write both mutating the plan and returning an error, which matches the remote design and changes no output. Gate green after the fix.
 - **2026-11-14T10:34:33-08:00** — Implemented: 8 commits ahead of `dev`.
+
+## Retrospective
+
+- The remote diff was close to landable as written: two of four commits retyped
+  identically, and the real defect (a `stamp --help` docstring with broken
+  indentation) showed only on reading the diff, not in any check.
+- Measuring the changelog's "28 git calls to 18" claim with a counting `git`
+  shim on a scaffolded copy of the template turned an unverifiable sandbox
+  claim into a fact, at the cost of one probe.
+- Diffing each retyped batch against the remote commit caught a regex rename
+  that also hit `subprocess.run`; the comparison is worth running per batch,
+  not only at the end.
+- With four small commits, reviewing and retyping inline cost less than the
+  workflow would have.
