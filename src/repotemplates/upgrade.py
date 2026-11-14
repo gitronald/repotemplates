@@ -335,7 +335,7 @@ def plan_stamp(
         return plan
     if (error := _plan_stamp_write(plan, report, installed)) is not None:
         plan.refused = error
-    elif behind and plan.stamp is not None and report.stamp.version != installed:
+    elif behind and report.stamp.version != installed:
         plan.stamp_reason += f" (forced past {len(behind)} file(s))"
     return plan
 
