@@ -5,7 +5,7 @@ status: active
 branch: feature/016-simplify-cli-and-docs
 created: 2026-11-14T10:26:33-08:00
 concluded:
-pr:
+pr: https://github.com/gitronald/repotemplates/pull/74
 ---
 
 # Simplify the CLI helpers and state current rules in the docs
@@ -63,3 +63,4 @@ None.
   - Worktree: `.worktrees/016-simplify-cli-and-docs`
   - PR: pending
 - **2026-11-14T10:32:21-08:00** — Reauthored all four remote commits by hand; no drops. Landed: 27d1c15 <- 115b735e (plus the stamp docstring fix and the kept named locals in check); 45faed3 <- 3c61218e (identical); 606273c <- 3856acf7 (identical); 5760b1c <- 50c198e5 (changelog wording fix). git diff 50c198e5 HEAD shows only plan 016's files, CHANGELOG.md, and cli.py, each a planned fix. Gate green on every batch: ruff check and format, pyrefly (0 errors), pytest (185 passed), shellcheck, portability.test.sh; init.test.sh passed after batch 2. The check git-call count was measured on a scaffolded copy of the template: 28 before, 18 after.
+- **2026-11-14T10:32:33-08:00** — PR opened: https://github.com/gitronald/repotemplates/pull/74
