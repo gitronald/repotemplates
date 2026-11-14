@@ -2,7 +2,7 @@
 
 | # | Plan | Status | Concluded | PR |
 |---|---|---|---|---|
-| 016 | [Simplify the CLI helpers and state current rules in the docs](plans/016-simplify-cli-and-docs/plan.md) | draft | — | — |
+| 016 | [Simplify the CLI helpers and state current rules in the docs](plans/016-simplify-cli-and-docs/plan.md) | active | — | — |
 | 011 | [Ship multiple templates: python-package, bash, and python-workspace](plans/011-multiple-templates/plan.md) | draft | — | — |
 | 009 | [Offer CodeQL default setup on public repos](plans/009-codeql-default-setup/plan.md) | draft | — | — |
 | 015 | [Let a first stamp through when an ignored .claude/ exists in no checkout](plans/015-stamp-first-adoption-ignored-claude/plan.md) | done | 2026-11-13 15:10 PT | [#72](https://github.com/gitronald/repotemplates/pull/72) |

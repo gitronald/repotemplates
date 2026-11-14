@@ -1,8 +1,8 @@
 ---
 id: 16
 slug: simplify-cli-and-docs
-status: draft
-branch:
+status: active
+branch: feature/016-simplify-cli-and-docs
 created: 2026-11-14T10:26:33-08:00
 concluded:
 pr:
@@ -53,3 +53,11 @@ None.
    `install-template` skill ("templates 0.5.0 through 0.8.4 shipped one", "from
    before 0.8.2", "before 0.10.0"), keeping each rule and leaving the history
    to the changelog. Keep that removal, or keep the version numbers?
+
+## Log
+
+- **2026-11-14T10:27:46-08:00** — Activated.
+  - Branch: `feature/016-simplify-cli-and-docs`
+  - Base: `dev` at `c27838e`
+  - Worktree: `.worktrees/016-simplify-cli-and-docs`
+  - PR: pending
