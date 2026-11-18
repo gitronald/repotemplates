@@ -2,8 +2,9 @@
 
 ``repotemplates skill <name>`` prints a body from the installed release, and
 ``repotemplates install`` writes a version-stamped stub where Claude Code and
-Codex read skills. Both skills act on other repos (upgrading one, enrolling one
-in Renovate), so the default install is global; ``--local`` stays available.
+Codex read skills. Every skill acts on other repos (upgrading one, enrolling one
+in Renovate, checking whether one publishes), so the default install is global;
+``--local`` stays available.
 ``test-init`` is not here: it tests a repotemplates checkout, so it stays in the
 checkout's ``.claude/skills/``.
 """
@@ -21,6 +22,7 @@ HOST = Host(
     artifacts=(
         Skill(name="install-template", sources=("install-template/SKILL.md",)),
         Skill(name="install-renovatabot", sources=("install-renovatabot/SKILL.md",)),
+        Skill(name="check-publishing", sources=("check-publishing/SKILL.md",)),
     ),
     render_cli=True,
     modes=("global", "local"),

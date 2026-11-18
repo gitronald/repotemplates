@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+### Added
+
+- A `check-publishing` skill, installed with the other two and printed by
+  `repotemplates skill check-publishing`. It loads when a session is about to
+  say whether a scaffolded repo publishes to PyPI, and establishes it from the
+  `PUBLISH_ENABLED` variable (repository and organization level), the publish
+  workflow's run history, and the registry, never from the presence of
+  `publish.yml`, a `pypi` environment, or a Trusted Publisher step.
+
 ### Changed
 
 - `check` asks git whether a directory is a repo once per repo instead of once

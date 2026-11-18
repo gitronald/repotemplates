@@ -50,7 +50,8 @@ jobs:
           diff <(git ls-files template | sed 's|^template/||' | sort) \
                <(unzip -Z1 "$RUNNER_TEMP"/dist/*.whl | sed -n 's|^repotemplates/template/||p' | sort)
           for f in scripts/init.sh scripts/renovatabot-enroll.sh \
-                   prompts/install-template/SKILL.md prompts/install-renovatabot/SKILL.md; do
+                   prompts/install-template/SKILL.md prompts/install-renovatabot/SKILL.md \
+                   prompts/check-publishing/SKILL.md; do
             unzip -Z1 "$RUNNER_TEMP"/dist/*.whl | grep -qx "repotemplates/$f" \
               || { echo "wheel lacks repotemplates/$f"; exit 1; }
           done
