@@ -1,0 +1,99 @@
+---
+id: 17
+slug: ship-publishing-skill
+status: done
+branch: feature/017-ship-publishing-skill
+created: 2026-11-18T13:38:44-08:00
+concluded: 2026-11-18T13:57:09-08:00
+pr: https://github.com/gitronald/repotemplates/pull/76
+---
+
+# Ship the publishing check as a bundled skill
+
+## Plan
+
+Issue #75. Two notes about template behavior that is easy to misread from a
+consumer repository live today in a hand-written user-level rule, outside the
+package, and load into every session. Ship them from the package instead, where
+they load on use and carry the release that knows the behavior.
+
+### Decisions
+
+1. **Publishing note: a new bundled skill, `check-publishing`.** It ships like the
+   two existing skills: `src/repotemplates/prompts/check-publishing/SKILL.md`,
+   registered in `src/repotemplates/host.py`, installed as a pkgskills stub, and
+   printed by `repotemplates skill check-publishing`. A skill rather than a
+   path-scoped rule, because the case that matters, an inventory across many
+   repos, reads no file a `paths:` pattern could match. The description loads it
+   when a session is about to say whether a repo scaffolded from the template
+   publishes to PyPI, or reads meaning into `publish.yml`, a `pypi` environment,
+   or a Trusted Publisher step. The body covers: publishing is off until
+   `PUBLISH_ENABLED` is `true`; never infer "published" from the workflow's
+   presence; the three checks (the variable, at repo level and through the
+   org-variables endpoint for an org-owned repo; the publish workflow's run
+   history; the registry, by `project.name`, with the author or source checked);
+   what a `200` with the variable unset means; and that the template's own docs
+   are the reference, not the consumer's copy. Each claim is re-derived from the
+   template's `publish.yml` and `docs/guides/trusted-publishers.md`, not copied
+   from the rule.
+2. **Tracked-hooks note: the `install-template` skill**, at the upgrade step that
+   runs `uv run pre-commit install --hook-type pre-commit --hook-type post-merge`.
+   When `git config --get core.hooksPath` is set, pre-commit refuses and exits 1;
+   the step counts as passing, and the setting is never unset.
+3. **Dropped:** the history of the rename from `proj-template` (the
+   `install-template` skill already handles the old stamp table) and the list of
+   releases that seeded a permission list.
+
+### Files
+
+- `src/repotemplates/prompts/check-publishing/SKILL.md` (new)
+- `src/repotemplates/host.py`: register the skill
+- `src/repotemplates/prompts/install-template/SKILL.md`: the `core.hooksPath` case
+- `tests/test_host.py`: add the skill to the parametrized list
+- `.github/workflows/test.yml`: the wheel check lists the new body
+- `README.md`, `.claude/CLAUDE.md`: name three skills
+- `CHANGELOG.md`: `[Unreleased]` entries under Added and Changed
+
+### Tests
+
+`uv run pytest` covers spec conformance (name grammar, description length), the
+commands a body names, the printed body, and the stubs a sandboxed install
+writes. Then `uv run ruff check .`, `uv run ruff format --check .`, and
+`uv run pyrefly check`.
+
+## Log
+
+- **2026-11-18T13:39:06-08:00** — Activated.
+  - Branch: `feature/017-ship-publishing-skill`
+  - Base: `dev` at `5e9557d`
+  - Worktree: `.worktrees/017-ship-publishing-skill`
+  - PR: pending
+- **2026-11-18T13:42:27-08:00** — PR opened: https://github.com/gitronald/repotemplates/pull/76
+- **2026-11-18T13:43:01-08:00** — Implemented the skill and the install-template note.
+  - What was done: added `check-publishing` (prompts body, host registration, test list, CI wheel check, README, `.claude/CLAUDE.md`, changelog Added) in 7ef1147; the `core.hooksPath` case in the install-template verify step plus changelog Changed in 62d5bb9.
+  - Re-derived from the template: an app or site leaves `publish.yml` out through the stamp's `omit`, so not every synced repo carries it; the gate reads the `vars` context, which takes organization variables too, and the build job names no environment, so a `pypi` environment variable cannot open it; Actions compares strings without case, so `True` also opens it; a `200` with the variable unset can also mean the gate was open for an earlier release and closed since; `check` reports the consumer's `publish.yml` row, which says whether its copy can be trusted to carry the gate.
+  - Verified the pre-commit refusal text and its `core.hooksPath` condition against the locked pre-commit 4.7.0 source.
+  - Not verified: that a run whose jobs all skip lists as `skipped` in `gh run list` (this repo's own tag runs all published), and the `admin:org` scope requirement for `gh variable get --org`; the skill's wording relies on neither alone.
+  - Checks at f753da1: ruff check passed, ruff format clean (31 files), pyrefly 0 errors (one existing warning in tests/test_ruff.py), pytest 186 passed. No manifest rebuild needed: the manifest covers template files only.
+- **2026-11-18T13:43:08-08:00** — Implemented: 4 commits ahead of `dev`.
+- **2026-11-18T13:57:27-08:00** — Review gate at medium level: two finders, verified in the main loop.
+  - Review follow-up: the skill named statuses `check` does not print for a file row; it now names `current`, `matches`, `missing`, `omitted`, `one-off`, `kept`, and `kept-behind` as `check.py` assigns them. The description lost a sentence that restated the body
+  - Conscious no-ops: the skill list enumerated by hand in four places (deriving it from the host declaration reaches outside this change), and the summary paragraphs that restate the guide (the skill is printed where the guide is not at hand)
+  - No paired regression tests: both fixes are to skill prose
+  - Checks after the fixes: ruff lint and format clean, pyrefly 0 errors, 186 tests passed
+  - Not verified: that a run whose jobs all skip is listed with a skipped conclusion, and the token scope the organization-level variable read needs; the skill does not depend on the first
+
+## Retrospective
+
+- Re-deriving each claim from the workflow file changed the text: an app or site omits
+  the workflow, the gate reads organization variables too, and a variable on the
+  publish job's environment cannot open a gate the build job also carries. A note
+  copied into a package is worth checking against the code it describes
+- The one error review found was of the same kind, in the other direction: status
+  words written from the README's prose instead of from what `check` assigns. A skill
+  that quotes a tool's output should take the words from the code that prints them
+- A skill fit where a path-scoped rule could not: the case that matters reads no file
+  in the repositories it judges
+- Not verified: how a fully skipped run is listed, and the organization-level token
+  scope. The skill tells the reader to look at the `publish` job, so it does not rest
+  on the first
