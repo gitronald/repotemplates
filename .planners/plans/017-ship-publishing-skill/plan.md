@@ -1,7 +1,7 @@
 ---
 id: 17
 slug: ship-publishing-skill
-status: active
+status: implemented
 branch: feature/017-ship-publishing-skill
 created: 2026-11-18T13:38:44-08:00
 concluded:
@@ -75,3 +75,4 @@ writes. Then `uv run ruff check .`, `uv run ruff format --check .`, and
   - Verified the pre-commit refusal text and its `core.hooksPath` condition against the locked pre-commit 4.7.0 source.
   - Not verified: that a run whose jobs all skip lists as `skipped` in `gh run list` (this repo's own tag runs all published), and the `admin:org` scope requirement for `gh variable get --org`; the skill's wording relies on neither alone.
   - Checks at f753da1: ruff check passed, ruff format clean (31 files), pyrefly 0 errors (one existing warning in tests/test_ruff.py), pytest 186 passed. No manifest rebuild needed: the manifest covers template files only.
+- **2026-11-18T13:43:08-08:00** — Implemented: 4 commits ahead of `dev`.
