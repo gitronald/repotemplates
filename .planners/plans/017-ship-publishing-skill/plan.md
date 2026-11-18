@@ -1,10 +1,10 @@
 ---
 id: 17
 slug: ship-publishing-skill
-status: implemented
+status: done
 branch: feature/017-ship-publishing-skill
 created: 2026-11-18T13:38:44-08:00
-concluded:
+concluded: 2026-11-18T13:57:09-08:00
 pr: https://github.com/gitronald/repotemplates/pull/76
 ---
 
@@ -82,3 +82,18 @@ writes. Then `uv run ruff check .`, `uv run ruff format --check .`, and
   - No paired regression tests: both fixes are to skill prose
   - Checks after the fixes: ruff lint and format clean, pyrefly 0 errors, 186 tests passed
   - Not verified: that a run whose jobs all skip is listed with a skipped conclusion, and the token scope the organization-level variable read needs; the skill does not depend on the first
+
+## Retrospective
+
+- Re-deriving each claim from the workflow file changed the text: an app or site omits
+  the workflow, the gate reads organization variables too, and a variable on the
+  publish job's environment cannot open a gate the build job also carries. A note
+  copied into a package is worth checking against the code it describes
+- The one error review found was of the same kind, in the other direction: status
+  words written from the README's prose instead of from what `check` assigns. A skill
+  that quotes a tool's output should take the words from the code that prints them
+- A skill fit where a path-scoped rule could not: the case that matters reads no file
+  in the repositories it judges
+- Not verified: how a fully skipped run is listed, and the organization-level token
+  scope. The skill tells the reader to look at the `publish` job, so it does not rest
+  on the first

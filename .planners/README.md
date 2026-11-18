@@ -2,9 +2,9 @@
 
 | # | Plan | Status | Concluded | PR |
 |---|---|---|---|---|
-| 017 | [Ship the publishing check as a bundled skill](plans/017-ship-publishing-skill/plan.md) | implemented | — | [#76](https://github.com/gitronald/repotemplates/pull/76) |
 | 011 | [Ship multiple templates: python-package, bash, and python-workspace](plans/011-multiple-templates/plan.md) | draft | — | — |
 | 009 | [Offer CodeQL default setup on public repos](plans/009-codeql-default-setup/plan.md) | draft | — | — |
+| 017 | [Ship the publishing check as a bundled skill](plans/017-ship-publishing-skill/plan.md) | done | 2026-11-18 13:57 PT | [#76](https://github.com/gitronald/repotemplates/pull/76) |
 | 016 | [Simplify the CLI helpers and state current rules in the docs](plans/016-simplify-cli-and-docs/plan.md) | done | 2026-11-14 10:34 PT | [#74](https://github.com/gitronald/repotemplates/pull/74) |
 | 015 | [Let a first stamp through when an ignored .claude/ exists in no checkout](plans/015-stamp-first-adoption-ignored-claude/plan.md) | done | 2026-11-13 15:10 PT | [#72](https://github.com/gitronald/repotemplates/pull/72) |
 | 014 | [Let stamp finish a fleet upgrade without --force](plans/014-stamp-without-force/plan.md) | done | 2026-11-13 11:27 PT | [#70](https://github.com/gitronald/repotemplates/pull/70) |
