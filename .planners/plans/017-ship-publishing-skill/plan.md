@@ -69,3 +69,9 @@ writes. Then `uv run ruff check .`, `uv run ruff format --check .`, and
   - Worktree: `.worktrees/017-ship-publishing-skill`
   - PR: pending
 - **2026-11-18T13:42:27-08:00** — PR opened: https://github.com/gitronald/repotemplates/pull/76
+- **2026-11-18T13:43:01-08:00** — Implemented the skill and the install-template note.
+  - What was done: added `check-publishing` (prompts body, host registration, test list, CI wheel check, README, `.claude/CLAUDE.md`, changelog Added) in 7ef1147; the `core.hooksPath` case in the install-template verify step plus changelog Changed in 62d5bb9.
+  - Re-derived from the template: an app or site leaves `publish.yml` out through the stamp's `omit`, so not every synced repo carries it; the gate reads the `vars` context, which takes organization variables too, and the build job names no environment, so a `pypi` environment variable cannot open it; Actions compares strings without case, so `True` also opens it; a `200` with the variable unset can also mean the gate was open for an earlier release and closed since; `check` reports the consumer's `publish.yml` row, which says whether its copy can be trusted to carry the gate.
+  - Verified the pre-commit refusal text and its `core.hooksPath` condition against the locked pre-commit 4.7.0 source.
+  - Not verified: that a run whose jobs all skip lists as `skipped` in `gh run list` (this repo's own tag runs all published), and the `admin:org` scope requirement for `gh variable get --org`; the skill's wording relies on neither alone.
+  - Checks at f753da1: ruff check passed, ruff format clean (31 files), pyrefly 0 errors (one existing warning in tests/test_ruff.py), pytest 186 passed. No manifest rebuild needed: the manifest covers template files only.
