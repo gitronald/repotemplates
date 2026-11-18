@@ -1,8 +1,8 @@
 ---
 id: 17
 slug: ship-publishing-skill
-status: draft
-branch:
+status: active
+branch: feature/017-ship-publishing-skill
 created: 2026-11-18T13:38:44-08:00
 concluded:
 pr:
@@ -60,3 +60,11 @@ they load on use and carry the release that knows the behavior.
 commands a body names, the printed body, and the stubs a sandboxed install
 writes. Then `uv run ruff check .`, `uv run ruff format --check .`, and
 `uv run pyrefly check`.
+
+## Log
+
+- **2026-11-18T13:39:06-08:00** — Activated.
+  - Branch: `feature/017-ship-publishing-skill`
+  - Base: `dev` at `5e9557d`
+  - Worktree: `.worktrees/017-ship-publishing-skill`
+  - PR: pending

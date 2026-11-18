@@ -2,7 +2,7 @@
 
 | # | Plan | Status | Concluded | PR |
 |---|---|---|---|---|
-| 017 | [Ship the publishing check as a bundled skill](plans/017-ship-publishing-skill/plan.md) | draft | — | — |
+| 017 | [Ship the publishing check as a bundled skill](plans/017-ship-publishing-skill/plan.md) | active | — | — |
 | 011 | [Ship multiple templates: python-package, bash, and python-workspace](plans/011-multiple-templates/plan.md) | draft | — | — |
 | 009 | [Offer CodeQL default setup on public repos](plans/009-codeql-default-setup/plan.md) | draft | — | — |
 | 016 | [Simplify the CLI helpers and state current rules in the docs](plans/016-simplify-cli-and-docs/plan.md) | done | 2026-11-14 10:34 PT | [#74](https://github.com/gitronald/repotemplates/pull/74) |
