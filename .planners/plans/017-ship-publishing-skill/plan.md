@@ -5,7 +5,7 @@ status: active
 branch: feature/017-ship-publishing-skill
 created: 2026-11-18T13:38:44-08:00
 concluded:
-pr:
+pr: https://github.com/gitronald/repotemplates/pull/76
 ---
 
 # Ship the publishing check as a bundled skill
@@ -68,3 +68,4 @@ writes. Then `uv run ruff check .`, `uv run ruff format --check .`, and
   - Base: `dev` at `5e9557d`
   - Worktree: `.worktrees/017-ship-publishing-skill`
   - PR: pending
+- **2026-11-18T13:42:27-08:00** — PR opened: https://github.com/gitronald/repotemplates/pull/76
