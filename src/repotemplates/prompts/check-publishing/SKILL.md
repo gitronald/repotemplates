@@ -1,6 +1,6 @@
 ---
 name: check-publishing
-description: Establish whether a repo scaffolded from or synced with repotemplates actually publishes to PyPI. Use before saying that such a repo is or is not published, released, or "on PyPI", for one repo or across an inventory of many, and whenever a `publish.yml`, a `pypi` environment, or a Trusted Publisher step is about to be read as evidence that a package ships. The template's publish workflow is off until the PUBLISH_ENABLED variable is true, so the file proves nothing.
+description: Establish whether a repo scaffolded from or synced with repotemplates actually publishes to PyPI. Use before saying that such a repo is or is not published, released, or "on PyPI", for one repo or an inventory of many, and whenever a `publish.yml`, a `pypi` environment, or a Trusted Publisher step is about to be read as evidence that a package ships.
 ---
 
 # Check publishing
@@ -25,10 +25,11 @@ reference. The opt-in steps are in the
 which a scaffolded repo does not carry.
 
 The consumer's own copy decides what that repo does, and it may have been
-edited. `{cli} check <path>` reports its `publish.yml` row as current, an earlier
-release, a one-off, missing, or omitted. For anything but current or an earlier
-release, read the copy before applying the checks below: it may have dropped the
-gate or publish on another trigger.
+edited. `{cli} check <path>` reports its `publish.yml` row: `current` and
+`matches` (an earlier release's copy) are the template's own text, and `missing`
+and `omitted` mean the repo has no such workflow. For `one-off`, `kept`, or
+`kept-behind`, the repo has changed the file, so read the copy before applying
+the checks below: it may have dropped the gate or publish on another trigger.
 
 ## The three checks
 
