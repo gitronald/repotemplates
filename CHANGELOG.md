@@ -30,6 +30,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/).
   the rules for older repos (a `[tool.proj-template]` table, an earlier stamp
   comment, a seeded `settings.local.json`) without the release history behind
   them, which stays in this changelog.
+- The `install-template` skill covers a repo that keeps its git hooks in a
+  tracked directory with `core.hooksPath` set: `pre-commit install` refuses
+  there, the upgrade treats that step as passing, and the setting stays.
 
 ## [0.17.0] - 2026-11-13
 

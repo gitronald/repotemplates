@@ -390,6 +390,15 @@ Name both hook types: the synced config carries a `planners-index` hook on the
 `post-merge` stage, and a plain `pre-commit install` registers only
 `pre-commit`, leaving that hook configured but never fired.
 
+A repo can keep its git hooks in a tracked directory (a `.githooks/`, say) with
+`core.hooksPath` pointing at it; `git config --get core.hooksPath` prints the
+setting when it is there. In such a repo `pre-commit install` exits 1 with
+"Cowardly refusing to install hooks with `core.hooksPath` set" and suggests
+unsetting it. Treat the install step as passing and never unset the setting:
+git would then stop running the repo's own hooks. Nothing is written to
+`.git/hooks`, so the worktree repair below does not apply, and
+`pre-commit run --all-files` still runs the checks.
+
 `pre-commit install` from inside the worktree writes the **shared**
 `.git/hooks/pre-commit` — worktrees do not get their own hooks directory — and
 bakes that worktree's venv in as `INSTALL_PYTHON`. It works for the rest of the
