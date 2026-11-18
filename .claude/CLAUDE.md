@@ -56,8 +56,9 @@ machine-wide.
 The root `pyproject.toml` is the `repotemplates` package: the typer CLI under
 `src/repotemplates/` (`check`, `upgrade`, `stamp`, `init`, `path`, `version`, plus `skill` and
 `install` from pkgskills), with `template/` and the two scaffold scripts shipped inside
-the wheel as package data. The `install-template` and `install-renovatabot`
-skill bodies live in `src/repotemplates/prompts/`, not `.claude/skills/`; a body
+the wheel as package data. The `install-template`, `install-renovatabot`, and
+`check-publishing` skill bodies live in `src/repotemplates/prompts/`, not
+`.claude/skills/`, and each is registered in `src/repotemplates/host.py`; a body
 names the template as `{cli} path template`, never a checkout path, because it
 is printed from an installed release. `test-init` stays in `.claude/skills/`,
 since it tests this checkout. The version is `VERSION` alone: hatchling reads it

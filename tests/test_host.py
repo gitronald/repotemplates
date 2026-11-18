@@ -15,7 +15,7 @@ from typer.testing import CliRunner
 from repotemplates.cli import app
 from repotemplates.host import HOST
 
-SKILLS = ("install-template", "install-renovatabot")
+SKILLS = ("install-template", "install-renovatabot", "check-publishing")
 
 
 def test_spec_conformant() -> None:

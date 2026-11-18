@@ -256,9 +256,11 @@ prerelease of the tool.
 
 ## Skills
 
-The package ships two Claude Code and Codex skills: `install-template`
-(scaffold a repo, or upgrade one to the template) and `install-renovatabot`
-(enroll a repo in the self-hosted Renovate). Install them once:
+The package ships three Claude Code and Codex skills: `install-template`
+(scaffold a repo, or upgrade one to the template), `install-renovatabot`
+(enroll a repo in the self-hosted Renovate), and `check-publishing` (establish
+whether a scaffolded repo actually publishes to PyPI, since `publish.yml` is off
+until `PUBLISH_ENABLED` is `true`). Install them once:
 
 ```bash
 repotemplates install            # stubs under ~/.claude/skills and ~/.agents/skills
