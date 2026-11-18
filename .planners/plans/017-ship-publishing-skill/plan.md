@@ -76,3 +76,9 @@ writes. Then `uv run ruff check .`, `uv run ruff format --check .`, and
   - Not verified: that a run whose jobs all skip lists as `skipped` in `gh run list` (this repo's own tag runs all published), and the `admin:org` scope requirement for `gh variable get --org`; the skill's wording relies on neither alone.
   - Checks at f753da1: ruff check passed, ruff format clean (31 files), pyrefly 0 errors (one existing warning in tests/test_ruff.py), pytest 186 passed. No manifest rebuild needed: the manifest covers template files only.
 - **2026-11-18T13:43:08-08:00** — Implemented: 4 commits ahead of `dev`.
+- **2026-11-18T13:57:27-08:00** — Review gate at medium level: two finders, verified in the main loop.
+  - Review follow-up: the skill named statuses `check` does not print for a file row; it now names `current`, `matches`, `missing`, `omitted`, `one-off`, `kept`, and `kept-behind` as `check.py` assigns them. The description lost a sentence that restated the body
+  - Conscious no-ops: the skill list enumerated by hand in four places (deriving it from the host declaration reaches outside this change), and the summary paragraphs that restate the guide (the skill is printed where the guide is not at hand)
+  - No paired regression tests: both fixes are to skill prose
+  - Checks after the fixes: ruff lint and format clean, pyrefly 0 errors, 186 tests passed
+  - Not verified: that a run whose jobs all skip is listed with a skipped conclusion, and the token scope the organization-level variable read needs; the skill does not depend on the first
